@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -38,7 +39,7 @@ class ProductController extends Controller
         }
         session()->put('cart', $cart);
 
-        return redirect()->route('products.index')->with('success', 'Product is toegevoegd aan de winkelwagen!');
+        return redirect()->route('cart.index')->with('success', 'Product is toegevoegd aan de winkelwagen!');
     }
 
     public function create()

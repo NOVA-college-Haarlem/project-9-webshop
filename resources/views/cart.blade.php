@@ -57,7 +57,7 @@
         <p><strong>Totaal: €{{ number_format($total, 2) }}</strong></p>
 
         @php
-            // Voorbeeld berekening van verzendkosten: als totaal < €50 dan €5, anders gratis
+            // als totaal < €50 dan €5, anders gratis
             $shippingCost = $total < 50 ? 5.00 : 0.00;
         @endphp
         <p><strong>Verzendkosten: €{{ number_format($shippingCost, 2) }}</strong></p>

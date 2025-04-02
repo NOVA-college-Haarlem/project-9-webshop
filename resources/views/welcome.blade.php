@@ -52,7 +52,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Product 1</h5>
                             <p class="card-text">$19.99</p>
-                            <a href="{{route('add-product-to-cart', $product->id)}}" class="btn btn-primary"">Add to Cart</a>
+                            <a href="{{route('products.addToCart', $product->id)}}" class="btn btn-primary">Add to Cart</a>
                         </div>
                         
                        
