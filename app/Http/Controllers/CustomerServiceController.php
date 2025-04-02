@@ -8,7 +8,7 @@ class CustomerServiceController extends Controller
 {
     public function home()
     {
-        return view('checkout.index');
+        return view('customerservice.index');
     }
 
    

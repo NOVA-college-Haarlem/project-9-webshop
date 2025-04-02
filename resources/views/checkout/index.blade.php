@@ -1,4 +1,6 @@
+<!-- filepath: c:\Users\Indy\Herd\project-9-webshop\resources\views\checkout\index.blade.php -->
 <!DOCTYPE html>
+<x-base-layout>
 <html lang="en">
 
 <head>
@@ -11,26 +13,24 @@
 <body>
     <div class="container my-5">
         <h1 class="text-center mb-4">Checkout</h1>
-        <form action="{{ route('checkout.store') }}" method="POST" class="p-4 border rounded shadow-sm bg-light">
+        <form action="{{ route('checkout.store') }}" method="POST" class="p-4 border rounded shadow-sm bg-light mx-auto" style="max-width: 600px;">
             @csrf
             <!-- Name -->
             <div class="mb-3">
                 <label for="voornaam" class="form-label">Voornaam*</label>
-                <input type="text" class="form-control" id="voornaam" name="naam" placeholder="Vul uw achternaam in" required>
+                <input type="text" class="form-control" id="voornaam" name="naam" placeholder="Vul uw voornaam in" required>
             </div>
 
             <div class="mb-3">
                 <label for="tussenvoegsel" class="form-label">Tussenvoegsel</label>
-                <input type="text" class="form-control" id="tussenvoegsel" name="tussenvoegselnaam" placeholder="Vul uw tussentoegsel in">
+                <input type="text" class="form-control" id="tussenvoegsel" name="tussenvoegselnaam" placeholder="Vul uw tussenvoegsel in">
             </div>
-
-
 
             <div class="mb-3">
                 <label for="achternaam" class="form-label">Achternaam*</label>
                 <input type="text" class="form-control" id="achternaam" name="achternaam" placeholder="Vul uw achternaam in" required>
             </div>
-            
+
             <!-- Email -->
             <div class="mb-3">
                 <label for="email" class="form-label">Email Address*</label>
@@ -39,8 +39,8 @@
 
             <!-- Address -->
             <div class="mb-3">
-                <label for="straat" class="form-label">Adress*</label>
-                <input type="text" class="form-control" id="straat" name="straat" placeholder="Vul uw adress in" required>
+                <label for="straat" class="form-label">Adres*</label>
+                <input type="text" class="form-control" id="straat" name="straat" placeholder="Vul uw adres in" required>
             </div>
 
             <!-- City -->
@@ -48,23 +48,16 @@
                 <label for="stad" class="form-label">Stad*</label>
                 <input type="text" class="form-control" id="stad" name="woonplaats" placeholder="Vul uw stad in" required>
             </div>
-            @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
             <!-- Postal Code -->
             <div class="mb-3">
-                <label for="post_code" class="form-label">Post Code*</label>
-                <input type="text" class="form-control" id="post_code" name="postcode" placeholder="Vul uw post code in" required>
+                <label for="post_code" class="form-label">Postcode*</label>
+                <input type="text" class="form-control" id="post_code" name="postcode" placeholder="Vul uw postcode in" required>
             </div>
+
             <div class="mb-3">
-                <label for="telefoonnummer" class="form-label">Telefoonummer</label>
-                <input type="text" class="form-control" id="telefoonnummer" name="telefoonnummer" placeholder="Vul uw post telefoonnummer in" >
+                <label for="telefoonnummer" class="form-label">Telefoonnummer</label>
+                <input type="text" class="form-control" id="telefoonnummer" name="telefoonnummer" placeholder="Vul uw telefoonnummer in">
             </div>
 
             <div class="mb-3">
@@ -78,23 +71,20 @@
             </div>
 
             <div class="mb-3">
-                <label for="facatuursadress1" class="form-label">Facatuursadress 1*</label>
-                <input type="text" class="form-control" id="facatuursadress1" name="facatuursadress1" placeholder="Vul uw facatuursadress in" required>
+                <label for="facatuursadress1" class="form-label">Factuuradres 1*</label>
+                <input type="text" class="form-control" id="facatuursadress1" name="facatuursadress1" placeholder="Vul uw factuuradres in" required>
             </div>
+
             <div class="mb-3">
-                <label for="facatuursadress2" class="form-label">Facatuursadress 2</label>
-                <input type="text" class="form-control" id="facatuursadress2" name="facatuursadress2" placeholder="Vul uw facatuursadress in">
-            </div>
-            <div class="mb-3">
-                <label for="tussenvoegsel" class="form-label">Tussenvoegsel adress</label>
-                <input type="text" class="form-control" id="facatuursadress2" name="tussenvoegseladress" placeholder="Vul uw tussenvoegsel in">
+                <label for="facatuursadress2" class="form-label">Factuuradres 2</label>
+                <input type="text" class="form-control" id="facatuursadress2" name="facatuursadress2" placeholder="Vul uw factuuradres in">
             </div>
 
             <!-- Payment Method -->
             <div class="mb-3">
-                <label for="payment_method" class="form-label">Payment Method</label>
+                <label for="payment_method" class="form-label">Betaalmethode</label>
                 <select class="form-select" id="payment_method" name="betaalmethode" required>
-                    <option value="" disabled selected>Select a payment method</option>
+                    <option value="" disabled selected>Selecteer een betaalmethode</option>
                     <option value="credit_card">Credit Card</option>
                     <option value="paypal">PayPal</option>
                     <option value="bank_transfer">Bank Transfer</option>
@@ -103,12 +93,10 @@
 
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg">Complete Purchase</button>
+                <button type="submit" class="btn btn-primary btn-lg">Aankoop Voltooien</button>
             </div>
         </form>
     </div>
-
-    
 </body>
-
+</x-base-layout>
 </html>

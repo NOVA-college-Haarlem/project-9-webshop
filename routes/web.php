@@ -12,6 +12,12 @@ use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\CustomerServiceController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
+use GuzzleHttp\Psr7\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -93,24 +99,27 @@ Route::name("reviews.")->prefix("reviews")->group(function () {
     Route::get('/edit/{review}', [ReviewController::class, 'edit'])->name('edit');
     Route::post('/update/{review}', [ReviewController::class, 'update'])->name('update');
     Route::delete('/delete/{review}', [ReviewController::class, 'destroy'])->name('destroy');
-
+});
 
 
     Route::get('customerservice/home', function (Request $request) {
         return view('customerservice.home');
     });
 
+Route::get('/customerservice/ticket/create', [TicketController::class, 'create'])->name('ticket.create');
+Route::post('/customerservice/ticket/store', [TicketController::class, 'store'])->name('ticket.store');
+
 
 Route::get('/customerservice', [CustomerServiceController::class, 'home'])->name('customerservice.home');
     Route::get('/customerservice/faq', [CustomerServiceController::class, 'faq'])->name('customerservice.faq');
     Route::get('/customerservice/contact', [CustomerServiceController::class, 'contact'])->name('customerservice.contact');
     Route::post('/customerservice/contact', [CustomerServiceController::class, 'sendContact'])->name('customerservice.contact.send');
-    
-
-
+   
 Route::get('/checkout', function (Request $request) {
     return view('checkout');
 })->name('checkout');
 Route::get('/checkout/index', [CheckoutController::class, 'checkout'])->name('checkout.index');
 Route::get('/checkout/edit', [CheckoutController::class, 'edit'])->name('checkout.edit');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+
+

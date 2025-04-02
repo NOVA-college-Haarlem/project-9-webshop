@@ -117,3 +117,12 @@ footer {
     background: #222;
     color: white;
 }
+
+.custom-blue-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+}

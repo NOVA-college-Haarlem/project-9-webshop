@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -14,20 +15,20 @@ class ProductController extends Controller
 
         return view('products.index', compact('products'));
     }
-  
+
     public function show($id)
     {
         $product = Product::findOrFail($id);
         return view('products.show', compact('product'));
     }
-  
+
     public function addToCart($id)
     {
         $product = Product::findOrFail($id);
 
         $cart = session()->get('cart', []);
 
-        if(isset($cart[$id])) {
+        if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
@@ -60,7 +61,7 @@ class ProductController extends Controller
 
 
     public function edit(Product $product)
-    {   
+    {
         $categories = Category::all();
 
         return view('products.edit', compact('product', 'categories'));
