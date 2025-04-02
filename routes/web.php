@@ -15,7 +15,9 @@ use App\Http\Controllers\UserController;
 use App\Models\User;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'products' => \App\Models\Product::all(),
+    ]);
 });
 
 
@@ -36,6 +38,7 @@ Route::name("products.")->prefix("products")->group(function () {
     Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('edit');
     Route::post('/update/{product}', [ProductController::class, 'update'])->name('update');
     Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('destroy');
+    Route::get('/detail/{product}', [ProductController::class, 'detail'])->name('detail');
 });
 
 Route::name("categories.")->prefix("categories")->group(function () {
