@@ -40,5 +40,12 @@
                 Add to Cart
             </a>
         </div>
+
+        <!-- Review Button -->
+        <div class="mt-6 flex justify-center">
+            <a href="{{ route('reviews.create', ['product' => $product->id]) }}" class="bg-green-500 text-white px-8 py-3 rounded-md hover:bg-green-600 transition duration-200 ease-in-out">
+                Write a Review
+            </a>
+        </div>
     </div>
 </x-base-layout>

@@ -69,26 +69,17 @@ Route::name("roles.")->prefix("roles")->group(function () {
     Route::delete('/delete/{role}', [RoleController::class, 'destroy'])->name('destroy');
 });
 
-
-//roles
-Route::get('/roles/index', [RoleController::class, 'index'])->name('roles.index');
-Route::get('/roles/create', [RoleController::class, 'create'])->name('roles.create');
-Route::post('/roles/store', [RoleController::class, 'store'])->name('roles.store');
-Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
-Route::post('/roles/update/{id}', [RoleController::class, 'update'])->name('roles.update');
-Route::get('/roles/delete/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
-
 //users
-Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
-Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
-Route::post('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users/delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-Route::get('/users/{id}', function ($id) {
-    $user = User::find($id);
-    return view('users.show', compact('user'));
-})->name('users.show');
+Route::name("users.")->prefix("users")->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('/create', [UserController::class, 'create'])->name('create');
+    Route::post('/', [UserController::class, 'store'])->name('store');
+    Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
+    Route::post('/update/{user}', [UserController::class, 'update'])->name('update');
+    Route::delete('/delete/{user}', [UserController::class, 'destroy'])->name('destroy');
+    Route::get('/show/{user}', [UserController::class, 'show'])->name('show');
+});
+
 
 
 Route::name("reviews.")->prefix("reviews")->group(function () {
@@ -98,4 +89,4 @@ Route::name("reviews.")->prefix("reviews")->group(function () {
     Route::get('/edit/{review}', [ReviewController::class, 'edit'])->name('edit');
     Route::post('/update/{review}', [ReviewController::class, 'update'])->name('update');
     Route::delete('/delete/{review}', [ReviewController::class, 'destroy'])->name('destroy');
-
+});
