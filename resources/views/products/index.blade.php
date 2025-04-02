@@ -21,9 +21,13 @@
                         @endforeach
                     </a>
                 </div>
-    
-                <!-- Delete Button -->
                 <div>
+                    <form action="{{ route('cart.index', $product->id) }}" method="POST">
+                        @csrf
+                        <a href="{{ route('products.addToCart', $product->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out">
+                            Voeg toe aan winkelwagen
+                        </a>
+                    </form>
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je dit product wilt verwijderen?');">
                         @csrf
                         @method('DELETE')
