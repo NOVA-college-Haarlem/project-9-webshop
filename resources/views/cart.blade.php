@@ -69,6 +69,7 @@
             </div>
             
 
+
             <div class="mt-6 text-center">
                 <a href="{{ route('checkout.index') }}">
                     <button type="button" class="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition duration-200">Ga naar de kassa</button>
@@ -78,6 +79,14 @@
             <p class="text-center text-gray-600">Je winkelwagen is leeg.</p>
         @endif
     </div>
+
+        @php
+            // als totaal < €50 dan €5, anders gratis
+            $shippingCost = $total < 50 ? 5.00 : 0.00;
+        @endphp
+        <p><strong>Verzendkosten: €{{ number_format($shippingCost, 2) }}</strong></p>
+        <p><strong>Totaal met verzendkosten: €{{ number_format($total + $shippingCost, 2) }}</strong></p>
+
 
 </body>
 </html>
