@@ -25,7 +25,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class , 'user_role' , 'user_id' , 'role_id');
+        return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
     }
 
     public function orders()
@@ -66,6 +66,16 @@ class User extends Authenticatable
     public function recentlyViewed()
     {
         return $this->hasMany(RecentlyViewed::class);
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);
+    }
+
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
     }
 
     /**

@@ -35,6 +35,8 @@
                 <a class="hover:text-yellow-500" href="/roles">Rollen</a>
                 <a class="hover:text-yellow-500" href="/users">Gebruikers</a>
                 <a class="hover:text-yellow-500" href="/customerservice">Klanten Service</a>
+                <a class="hover:text-yellow-500" href="/admin/index">Admin</a>
+
             </div>
         </div>
     </nav>

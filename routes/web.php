@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
@@ -71,7 +71,7 @@ Route::name("roles.")->prefix("roles")->group(function () {
 });
 
 
-//roles
+
 Route::get('/roles/index', [RoleController::class, 'index'])->name('roles.index');
 Route::get('/roles/create', [RoleController::class, 'create'])->name('roles.create');
 Route::post('/roles/store', [RoleController::class, 'store'])->name('roles.store');
@@ -122,4 +122,16 @@ Route::get('/checkout/index', [CheckoutController::class, 'checkout'])->name('ch
 Route::get('/checkout/edit', [CheckoutController::class, 'edit'])->name('checkout.edit');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 
+Route::get('/admin/index', function (Request $request) {
+    return view('admin.index');
+})->name('admin.index');
+Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.products/edit');
+Route::get('/admin/produts', [AdminController::class, 'products'])->name('admin.products');
+Route::get('/admin/categories', [AdminController::class, 'categories'])->name('admin.categories');
+Route::get('/admin/tickets', [TicketController::class, 'tickets'])->name('admin.tickets');
+
+
+Route::get('/admin/tickets/{id}/edit', [TicketController::class, 'edit'])->name('admin.tickets.edit');
+Route::delete('/admin/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');
+Route::put('/admin/tickets/update/{id}', [TicketController::class, 'update'])->name('admin.tickets.update');
 
