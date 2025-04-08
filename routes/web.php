@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
@@ -11,16 +10,25 @@ use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 
-Route::get('/', function () {
-    return view('welcome', [
-        'products' => \App\Models\Product::all(),
-    ]);
-});
 
+Route::get('/', [HomeController::class, 'index']);
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 // Cart Routes
 Route::resource('cart', CartController::class)->only(['index', 'store', 'destroy']);
@@ -40,6 +48,10 @@ Route::name("products.")->prefix("products")->group(function () {
     Route::post('/update/{product}', [ProductController::class, 'update'])->name('update');
     Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('destroy');
     Route::get('/detail/{product}', [ProductController::class, 'detail'])->name('detail');
+});
+
+Route::middleware('auth')->name('products.')->group(function () {
+    Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('edit');
 });
 
 Route::name("categories.")->prefix("categories")->group(function () {
@@ -90,3 +102,5 @@ Route::name("reviews.")->prefix("reviews")->group(function () {
     Route::post('/update/{review}', [ReviewController::class, 'update'])->name('update');
     Route::delete('/delete/{review}', [ReviewController::class, 'destroy'])->name('destroy');
 });
+
+require __DIR__.'/auth.php';

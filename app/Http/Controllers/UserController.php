@@ -41,9 +41,10 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function edit(User $user)
+    public function edit(User $users)
     {
-        $roles = Role::all(); // If needed, you can pass related products here.
+        $user = User::findorfail($users->id);
+        $roles = Role::all();
 
         return view('users.edit', compact('user', 'roles'));
     }
