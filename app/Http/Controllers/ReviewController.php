@@ -30,7 +30,6 @@ class ReviewController extends Controller
     {
         $review = new Review();
     
-        // Save the review using the private save method
         $this->save($review, $request);
     
         return redirect('/reviews');
@@ -69,8 +68,8 @@ class ReviewController extends Controller
     {
         // Set the properties for the review and save it
         $review->title = $request->title;
-        $review->content = $request->content; // Example: assuming reviews have content
-        $review->rating = $request->rating; // Example: assuming reviews have a rating field
+        $review->review = $request->review;
+        $review->rating = $request->rating;
         $review->save();
         
         // Attach any related products (if applicable)
