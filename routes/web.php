@@ -1,14 +1,17 @@
 <?php
 
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\CheckoutController;
+>>>>>>> 06366312d0e607fa110346c10dbf71bd1989bc1d
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 
 
 use App\Http\Controllers\RoleController;
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -30,15 +33,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Cart Routes
+// Cart and Checkout Routes
 Route::resource('cart', CartController::class)->only(['index', 'store', 'destroy']);
 Route::put('/cart/update-item/{id}', [CartController::class, 'updateItem'])->name('cart.updateItem');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout.index');
-
-// Coupon & Product Routes
-
-
 Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('products.addToCart');
+Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
+// Product Routes
 
 Route::name("products.")->prefix("products")->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index');
