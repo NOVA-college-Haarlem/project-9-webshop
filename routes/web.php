@@ -1,9 +1,5 @@
 <?php
-
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\CheckoutController;
->>>>>>> 06366312d0e607fa110346c10dbf71bd1989bc1d
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
