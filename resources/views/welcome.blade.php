@@ -13,7 +13,7 @@
                 <a href="{{ route('products.detail', $product->id) }}" class="block">
 
                         <!-- Product Image -->
-                        <img src="https://via.placeholder.com/300" class="w-full h-48 object-cover rounded-t-lg" alt="Product Image">
+                        {{-- <img src="https://via.placeholder.com/300" class="w-full h-48 object-cover rounded-t-lg" alt="Product Image"> --}}
         
                         <!-- Product Details -->
                         <div class="card-body mt-4">
@@ -29,11 +29,9 @@
 
                         <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product 1">
                         <div class="card-body">
-                            <h5 class="card-title">Product 1</h5>
-                            <p class="card-text">$19.99</p>
-                            <a href="{{route('products.addToCart', $product->id)}}" class="btn btn-primary">Add to Cart</a>
-
+                            <a href="{{ route('products.addToCart', $product->id) }}" class="btn btn-primary">Add to Cart</a>
                         </div>
+                        
                     </div>
                 </a>
             </div>
